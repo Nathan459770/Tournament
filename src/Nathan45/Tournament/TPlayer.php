@@ -126,7 +126,7 @@ class TPlayer extends Player implements IConfig
                 });
 
                 $form->setTitle("§7- §cSettings §7-");
-                $form->addToggle("Scoreboard", true);
+                $form->addToggle("Scoreboard", DataManager::getInstance()->getScoreboardFor($this->getName()));
                 break;
 
             default:
