@@ -1,0 +1,7 @@
+name: Tournament
+author: Nathan45
+main: Nathan45\Tournament\Loader
+version: 0.1
+api: 4.0.0
+website: "https://github.com/Nathan459770"
+description: "This is a PocketMine-MP plugin that implements tournaments in your server. This plugin was developed for Rose Network."
