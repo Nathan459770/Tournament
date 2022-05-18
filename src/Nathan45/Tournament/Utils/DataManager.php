@@ -68,7 +68,7 @@ class DataManager
     }
 
     public function getScoreboardFor(string $player): bool{
-        return boolval($this->getDataFor($player[self::SCOREBOARD]) ?? 1);
+        return boolval($this->getDataFor($player)[self::SCOREBOARD] ?? 1);
     }
 
     public function setScoreboardFor(string $player, bool $scoreboard = true): void{

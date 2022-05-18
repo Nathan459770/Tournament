@@ -141,11 +141,22 @@ class TPlayer extends Player implements IConfig
             if($api->hasScore($this)) $api->removeScore($this);
             return;
         }
-        $lines = [
-            self::LINE_0,
-            str_replace("{round}", $event->getRound(), self::LINE_1),
-            self::LINE_2,
-            (($event->getDuel() instanceof Duel) ? str_replace(["{player}", "{player2}"], [$event->getDuel()->getPlayer1()->getName(), $event->getDuel()->getPlayer2()->getName()],self::LINE_3) : str_replace("{seconds}", $event->getStartDate(), self::LINE_WAITING))
+        $lines = ($event->getStatus() === Event::STATUS_PENDING) ? [
+            "",
+            " §cRound §c[{$event->getRound()}]",
+            " §c",
+            " §cHoster [{$event->getHoster()?->getName()}]",
+            " §c§c",
+            "§r"
+        ] : [
+            "",
+            " §cRound §c[{$event->getRound()}]",
+            " §c",
+            " §cPlayers [{$event->getDuel()->getPlayer1()->getName()}, {$event->getDuel()->getPlayer1()->getName()}]",
+            " §c§r",
+            " §cHoster [{$event->getHoster()?->getName()}]",
+            " §c§c",
+            "§r"
         ];
         $api->sendScore($this, self::SCOREBOARD_TITLE);
         $api->setLines($this, $lines);
